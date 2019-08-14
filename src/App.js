@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CapitalGame from './components/CapitalGame.js';
+import FlagGame from './components/FlagGame.js';
+import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
+import Info from './components/Info';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <NavLink className="nav-item nav-link" to="/capital/">
+            Capital Game
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/flag/"> 
+            Flag Game
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/list/"> 
+            Country List
+          </NavLink>
+        </nav>
+
+
+      <Route path="/capital/" component={CapitalGame}/>
+      <Route path="/flag/" component={FlagGame}/>
+      <Route path="/list/" component={Info}/>
+
+      </Router>
     </div>
   );
 }
