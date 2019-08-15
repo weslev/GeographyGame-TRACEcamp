@@ -26,14 +26,16 @@ function Info() {
       
     // Displays list
     return (
-        <div class="container">
+        <div className="container">
             {infoList.map((country) => {
                 {console.log(country)}
                 return ( 
-                    <div>
-                    <img src={country.flag} alt="countryflag" width="200" height="100"/>
-                    <h2>{country.name}</h2> 
-                    <h3>{country.capital}</h3> 
+                    <div className="d-flex justify-content-center text-center">
+                        <div>
+                            <img src={country.flag} alt="countryflag" width="200" height="100"/>
+                            <h2>{country.name}</h2> 
+                            <h3>{country.capital}</h3> 
+                        </div>
                     </div>
                 ); 
             })}
