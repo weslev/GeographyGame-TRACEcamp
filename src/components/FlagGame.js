@@ -79,7 +79,12 @@ function FlagGame() {
                         <img src={flag} width="300" height="200" />
                     </div>
                     {countries.map((name) => {
-                        return <div class="row justify-content-md-center"><button onClick={handleClick} value={name.flag} class="btn btn-dark btn-block">{name.name}</button></div>                        
+                        return (<React.Fragment>
+                            <div style={{height: '10px'}}></div>
+                            <div class="row justify-content-md-center">
+                                <button onClick={handleClick} value={name.flag} class="btn btn-dark btn-block">{name.name}</button>
+                            </div>
+                            </React.Fragment>)                       
                     })}
                     <h3 class="row justify-content-md-center">Score: {score}</h3>
                 </div>

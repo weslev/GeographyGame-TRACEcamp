@@ -75,7 +75,9 @@ function CapitalGame() {
         return (<div class="container">
                     <h1 class="row justify-content-md-center">{capital}</h1>
                     {countries.map((name) => {
-                        return <div class="row justify-content-md-center"><button onClick={handleClick} value={name.capital} class="btn btn-dark btn-block">{name.name}</button></div>                  
+                        return (<React.Fragment><div style={{height: '10px'}}></div>
+                        <div class="row justify-content-md-center"><button onClick={handleClick} value={name.capital} class="btn btn-dark btn-block">{name.name}</button></div> 
+                        </React.Fragment>)                
                     })}
                     <h3 class="row justify-content-md-center">Score: {score}</h3>
                 </div>);
