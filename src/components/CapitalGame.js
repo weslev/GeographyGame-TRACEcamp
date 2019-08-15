@@ -31,7 +31,6 @@ function CapitalGame() {
     const [score, setScore] = useState(0);
     const [capital, setCapital] = useState("");
     const [fail, setFailure] = useState(false);
-    var code = ' ';
     
     // Handles in game clicks
     function handleClick(event) {
@@ -50,7 +49,7 @@ function CapitalGame() {
     // Sets the countries state to an list of country information
     React.useEffect(() => {
             // Sets code to the section of codeList in relation to the length of the countries state
-            code = codeList[countries.length];
+            var code = codeList[countries.length];
             // Uses the REST Countries API to retrieve country information based on country codes
             axios.get(`https://restcountries.eu/rest/v2/callingcode/${code}`).then((res) => {
                 // Add countries to the state as long as the length of it does not exceed 4

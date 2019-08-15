@@ -7,13 +7,12 @@ function Info() {
     var countries = ["1", "52", "53", "55", "54", "51", "58", "57", "212", "20", "27", "235", "244", "251", "218", "227",
                     "33", "49", "43", "44", "46", "47", "90", "380", "7", "48", "86", "82", "81", "66", "62", "91", "94",
                     "98", "966", "967", "92", "93", "994", "61"]
-    var code = ' ';
 
     const [infoList, setInfoList] = useState([]);
 
     // Gets countries
     React.useEffect(() => {
-        code = countries[infoList.length];
+        var code = countries[infoList.length];
         axios.get(`https://restcountries.eu/rest/v2/callingcode/${code}`).then((res) => {
             if(infoList.length < countries.length){
                 setInfoList([...infoList, res.data[0]]); 
