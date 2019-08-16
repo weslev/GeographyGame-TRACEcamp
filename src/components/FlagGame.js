@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 // CountrySelect creates a random array of county codes.
 function CountrySelect() {
@@ -74,30 +75,34 @@ function FlagGame() {
     // User interface 
     // Will be displayed once the countries state is populated and the player has not lost
     if (countries.length === 4 && fail === false) {
-        return (<div class="container">
-                    <div class="row justify-content-md-center">
+        return (<div className="container">
+                    <div style={{height: '125px'}}></div>
+                    <div className="row justify-content-md-center">
                         <img src={flag} width="300" height="200" />
                     </div>
                     {countries.map((name) => {
-                        return (<React.Fragment>
+                        return (<React.Fragment key={name.name}>
                             <div style={{height: '10px'}}></div>
-                            <div class="row justify-content-md-center">
-                                <button onClick={handleClick} value={name.flag} class="btn btn-dark btn-block">{name.name}</button>
+                            <div className="row justify-content-md-center">
+                                <button onClick={handleClick} value={name.flag} className="btn btn-dark btn-block">{name.name}</button>
                             </div>
                             </React.Fragment>)                       
                     })}
-                    <h3 class="row justify-content-md-center">Score: {score}</h3>
+                    <h3 className="row justify-content-md-center">Score: {score}</h3>
                 </div>
                 );
     } else if (fail === true) { // Otherwise displays end game screen
         return(
-            <div class="container">
-                <h3 class="row justify-content-md-center">YOU LOSE! Final score: {score}</h3>
-                <a href="/flag/" class="row justify-content-md-center">Try again</a>  
+            <div className="container">
+                <h3 className="row justify-content-md-center">YOU LOSE! Final score: {score}</h3>
+                <Link to="/flag/" className="row justify-content-md-center" onClick={() => {
+                    setFailure(false);
+                    setScore(0);
+                }}>Try again</Link>  
             </div>
         );
     } else { // While loading the information, a loading screen will be displayed
-        return <div class="row justify-content-md-center">Loading...</div>
+        return <div className="row justify-content-md-center">Loading...</div>
     }
 }
 

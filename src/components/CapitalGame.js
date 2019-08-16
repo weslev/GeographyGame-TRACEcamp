@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 // CountrySelect creates a random array of county codes.
 function CountrySelect() {
@@ -72,20 +73,26 @@ function CapitalGame() {
     // User interface 
     // Will be displayed once the countries state is populated and the player has not lost
     if (countries.length === 4 && fail === false) {
-        return (<div class="container">
-                    <h1 class="row justify-content-md-center">{capital}</h1>
+        return (<div className="container">
+                    <div style={{height: '200px'}}></div>
+                    <h1 className="row justify-content-md-center">{capital}</h1>
                     {countries.map((name) => {
-                        return (<React.Fragment><div style={{height: '10px'}}></div>
-                        <div class="row justify-content-md-center"><button onClick={handleClick} value={name.capital} class="btn btn-dark btn-block">{name.name}</button></div> 
+                        return (<React.Fragment key={name.name}><div style={{height: '10px'}}></div>
+                        <div className="row justify-content-md-center"><button onClick={handleClick} value={name.capital} className="btn btn-dark btn-block">{name.name}</button></div> 
                         </React.Fragment>)                
                     })}
-                    <h3 class="row justify-content-md-center">Score: {score}</h3>
+                    <h3 className="row justify-content-md-center">Score: {score}</h3>
                 </div>);
     } else if (fail === true) {
         return(
-            <div class="container">
-                <h3 class="row justify-content-md-center">YOU LOSE! Final score: {score}</h3>
-                <a href="/game/" class="row justify-content-md-center">Try again</a>  
+            <div className="container">
+                <h3 className="row justify-content-md-center">YOU LOSE! Final score: {score}</h3>
+                <Link to="/capital/" className="row justify-content-md-center" onClick={() => {
+                    setFailure(false);
+                    setScore(0);
+                    setCodeList(CountrySelect())
+                    setCountries([])
+                }}>Try again</Link>  
             </div>
             )
     } else {
